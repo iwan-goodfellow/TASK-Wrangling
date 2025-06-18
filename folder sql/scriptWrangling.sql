@@ -81,7 +81,9 @@ WHERE order_delivered_customer_date IS NOT NULL
 CREATE TEMP VIEW delivery_median AS
 SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY delivery_days) AS med_delivery FROM valid_delivery;
 
+-- ==========================================
 -- STEP 5:Data final
+-- ==========================================
 CREATE MATERIALIZED VIEW final_dataset AS
 SELECT 
     cd.*,
